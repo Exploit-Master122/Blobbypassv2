@@ -1,7 +1,15 @@
 ## [BlobBypass](https://blobbypass.pages.dev/)
-BlobBypass is an exploit that allows Chromebook users to bypass website restrictions. It requires [Blobwifi](https://sites.google.com/view/edu-blobe/apps/blobwifi) to function.
+BlobBypass is an exploit that allows ChromeOS and Linux Debian to open unbl0ck3d sites using the 
 
-- Pages visited in this window will not be saved to your history, but their cookies will be saved.
+- ***Assets***:
+- Pages visited in this window will not be saved to your history, but their cookies and data will be saved. (v2)
+- (v2) For example,if you are at level 18 on Level Devel,your data will not be erased.
 - You can right-click on the window to go back and forward.
-- There's no good way to make the text in the window larger.
-- You can't log into non-school accounts.
+- The expl01t is synced to your whole google account.It's like a smaller window,that has no extensions running on it.That's all.
+- You can pretty much do anything you want!
+
+- ***Cons***
+- To make the window bigger...It's hard.
+- I don't really imagine anyone playing roblox or minecraft on this tiny window.
+- The window only lasts for 10 minutes.Then,it closes.Don't worry,just reload the site and click "Deploy" again!
+- Those are the main problems...
