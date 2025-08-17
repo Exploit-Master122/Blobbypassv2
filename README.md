@@ -1,4 +1,4 @@
-## [BlobBypass](https://blobbypass.pages.dev/)
+## [BlobBypass (DevLaunchv3)](https://devlaunchv3.netlify.app/)
 BlobBypass is an exploit that allows ChromeOS and Linux Debian to open unbl0ck3d sites using the 
 
 - ***Assets***:
