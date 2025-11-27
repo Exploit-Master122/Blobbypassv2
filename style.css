@@ -2,6 +2,9 @@
   --red: #ff9393;
   --green: #93ffa9;
   --blue: #93adff;
+  --glass-bg: rgba(53, 53, 53, 0.25);
+  --glass-border: rgba(147, 173, 255, 0.4);
+  --particle-color: linear-gradient(45deg, var(--red), var(--blue));
 }
 
 * {
@@ -12,34 +15,74 @@
 }
 
 body {
-  background-color: #353535;
+  background: linear-gradient(135deg, #2a2a2a, #3d3d3d);
   color: white;
   padding: 100px 5%;
   text-align: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(147, 173, 255, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(147, 255, 169, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 40% 80%, rgba(255, 147, 147, 0.1) 0%, transparent 40%);
+  z-index: -2;
 }
 
 input {
   width: 700px;
   display: block;
-  border: 5px solid var(--blue);
+  border: 5px solid var(--glass-border);
   padding: 15px 20px;
   margin: 5px auto;
   font-size: 25px;
   font-family: monospace;
-  background-color: inherit;
+  background: var(--glass-bg);
   color: inherit;
   border-radius: 10px;
-  transition: border-color 250ms;
+  transition: all 250ms ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+input::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(147, 255, 169, 0.1), transparent);
+  transform: rotate(30deg);
+  transition: all 0.5s ease;
+  z-index: -1;
 }
 
 input:focus {
   border-color: var(--green);
   outline: none;
+  box-shadow: 0 8px 32px rgba(147, 255, 169, 0.3);
+  background: rgba(53, 53, 53, 0.35);
+}
+
+input:focus::before {
+  transform: rotate(30deg) translate(20px, 20px);
 }
 
 button {
   width: 700px;
-  background-color: var(--blue);
+  background: linear-gradient(45deg, var(--blue), var(--green));
   color: #222222;
   font-size: 20px;
   padding: 30px;
@@ -48,23 +91,70 @@ button {
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 250ms;
+  transition: all 250ms ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: 0.5s ease;
 }
 
 button:hover {
-  background-color: var(--green);
+  background: linear-gradient(45deg, var(--green), var(--blue));
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(147, 255, 169, 0.4);
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 20px rgba(147, 255, 169, 0.3);
 }
 
 p {
   margin: 20px 0px;
+  position: relative;
+  z-index: 1;
 }
 
 a {
   color: var(--red);
+  text-decoration: none;
+  position: relative;
+  transition: all 250ms ease;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--red);
+  transition: width 250ms ease;
 }
 
 a:hover {
   text-decoration: none;
+  color: #ffaaaa;
+}
+
+a:hover::after {
+  width: 100%;
 }
 
 .credit {
@@ -74,4 +164,53 @@ a:hover {
   left: auto;
   right: 10px;
   bottom: 10px;
+  background: var(--glass-bg);
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Glassmorphism particles */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--particle-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  25% { transform: translate(20px, -30px) scale(1.2); opacity: 0.8; }
+  50% { transform: translate(-20px, 30px) scale(0.8); opacity: 0.4; }
+  75% { transform: translate(30px, 20px) scale(1.1); opacity: 0.7; }
+}
+
+/* RigTools title */
+.rigtools-title {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(45deg, var(--blue), var(--red));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  pointer-events: none;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 5px rgba(147, 173, 255, 0.5); }
+  to { text-shadow: 0 0 20px rgba(255, 147, 147, 0.8), 0 0 30px rgba(147, 173, 255, 0.6); }
 }
