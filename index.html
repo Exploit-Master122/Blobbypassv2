@@ -6,13 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>DevLaunch v3</title>
     <link rel="stylesheet" href="./style.css" />
+    <!-- Add the beforeunload event listener script -->
+    <script>
+      window.addEventListener('beforeunload', function (e) {
+        // Standard message (most browsers will show their own standard message)
+        const message = 'Leave site? Changes you made may not be saved';
+        e.returnValue = message; // For older browsers
+        return message;          // For standard compliance
+      });
+    </script>
     <script src="./script.js" defer></script>
   </head>
 
   
   <body>
     <img src="/pay/icon.png" alt="DevLaunchV3" width="200" height="200" />
-    <input type="url" value="https://google.com" />
+    <input type="url" value="https://google.com  " />
     <button>
       <span style="font-size: 20px">Deploy</span>
     </button>
@@ -21,7 +30,7 @@
     <p>DevLaunch is an exploit that allows users to open Unbl0ck3d sites with the Payment request API!.
 </p>
     <div class="credit">
-      <p><a href="https://github.com/Exploit-Master122">Made by Exploit-Master12.</a></p> Credits to Blobby Boi for Payload, Redone for S3curly.
+      <p><a href="https://github.com/Exploit-Master122  ">Made by Exploit-Master12.</a></p> Credits to Blobby Boi for Payload, Redone for S3curly.
     </div>
   </body>
 </html>
